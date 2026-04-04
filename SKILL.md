@@ -1,109 +1,193 @@
 ---
 name: create-boss
-description: "Distill your boss into an AI Skill. 越苛刻越好，支持持续进化、多老板对战、Nightmare排行榜、语音对线、Docker部署。"
+description: "Distill your boss into an AI Skill. 越苛刻越好，支持持续进化、Claude Code架构深度集成。"
 argument-hint: "[boss-name-or-slug]"
-version: "5.0.0"
+version: "6.0.0"
 user-invocable: true
 allowed-tools: Read, Write, Edit, Bash
 ---
 
 > **Language / 语言**: This skill supports both English and Chinese. Detect the user's language from their first message and respond in the same language throughout.
 
-# 老板.skill 创建器 v5.0
+# 老板.skill 创建器 v6.0
 
-> *让苛刻成为生产力 — 100分冲冠版* 🏆
+> *让苛刻成为生产力 — Claude Code架构深度集成版* 🏆
 
 ---
 
-## 🎯 100分完整功能清单
+## 🎯 Claude Code架构深度集成
 
-| 功能 | 亮点 | 状态 |
+| Claude Code特性 | Boss Skill集成 |
+|----------------|---------------|
+| **Cost Tracker** | ✅ 实时成本追踪，API调用统计 |
+| **Session Manager** | ✅ 会话保存/恢复/归档 |
+| **/doctor** | ✅ 健康检查诊断工具 |
+| **101 Commands** | ✅ 模块化命令系统 |
+| **State Persistence** | ✅ 状态持久化 |
+| **Health Monitor** | ✅ 系统健康监控 |
+
+---
+
+## 核心工具
+
+| 工具 | 命令 | 说明 |
 |------|------|------|
-| 🏢 **管理风格提取** | 从邮件/聊天记录提取管理风格 | ✅ |
-| 😤 **苛刻人格还原** | 五层 Persona 还原真实施压模式 | ✅ |
-| 📊 **Nightmare Level** | 量化评估窒息程度（1-5星） | ✅ |
-| 🧬 **自我进化 v3.0** | 从对话中学习，自动检测模式 | ✅ |
-| 🤖 **RL反馈追踪** | 强化学习行为评分+强化/弱化 | ✅ |
-| ⚔️ **多老板对战** | 修罗场：你+老板A vs 老板B | ✅ |
-| 🏆 **公开排行榜** | Nightmare Level 社区投票 | ✅ |
-| 🎬 **语音对线** | TTS语音模拟老板追问 | ✅ |
-| 🌐 **互动Web Demo** | 浏览器直接体验对线 | ✅ |
-| 🐳 **Docker部署** | 一键部署到云端 | ✅ |
-| ✅ **CI/CD** | GitHub Actions自动测试发布 | ✅ |
-| 🧪 **测试覆盖** | pytest全面单元测试 | ✅ |
+| **cost_tracker.py** | `/boss-cost` | 实时成本追踪 |
+| **session_manager.py** | `/boss-session` | 会话管理 |
+| **doctor.py** | `/boss-doctor` | 健康检查 |
+| **evolution_logger.py** | `/boss-evolve` | 进化追踪 |
+| **pattern_detector.py** | `/boss-patterns` | 模式检测 |
+| **rl_feedback.py** | `/boss-rl` | RL反馈 |
+| **multi_boss_battle.py** | `/boss-battle` | 多老板对战 |
+| **leaderboard.py** | `/boss-leaderboard` | 排行榜 |
 
 ---
 
-## 🏆 冲冠Hackathon评分：100/100
+## 💰 Cost Tracker - Claude Code风格成本追踪
 
-| 维度 | 权重 | 得分 |
-|------|------|------|
-| 创意 | 20% | 10/10 |
-| 技术实现 | 25% | 10/10 |
-| 工程化程度 | 20% | 10/10 |
-| 实用价值 | 25% | 10/10 |
-| 演示效果 | 10% | 10/10 |
+### 实时成本显示
 
----
-
-## 快速开始
-
-### Docker一键部署
-
-```bash
-docker-compose up -d
-# 访问 http://localhost:8080
+```
+┌─────────────────────────────────────────┐
+│         Boss Skill Cost Tracker           │
+└─────────────────────────────────────────┘
+│ Session: session_20260404_150000        │
+│ Total Cost: $0.023456                  │
+│ Total Calls: 47                        │
+├─────────────────────────────────────────┤
+│ Tokens:                                   │
+│   Input:  12,345                        │
+│   Output: 67,890                         │
+├─────────────────────────────────────────┤
+│ By Action Type:                            │
+│   evolve  : $0.010234 (15 calls)
+│   feedback: $0.008765 (20 calls)
+│   battle  : $0.004457 (12 calls)
+└─────────────────────────────────────────┘
 ```
 
-### 互动Demo体验
+### 使用方式
 
 ```bash
-# 直接打开浏览器
-open demo/index.html
-# 或
-python -m http.server 8080
-```
+# 记录一次API调用
+python tools/cost_tracker.py --slug example_wang --action record \
+  --model claude-3-5-sonnet \
+  --input-tokens 1000 --output-tokens 500
 
-### GitHub Actions自动发布
+# 查看当前成本
+python tools/cost_tracker.py --slug example_wang --action show
 
-```bash
-git tag v5.0.0
-git push origin v5.0.0
-# 自动触发: 测试 → Docker构建 → Release → ClawhHub提交
+# 查看历史
+python tools/cost_tracker.py --slug example_wang --action history
 ```
 
 ---
 
-## 🏛️ v5.0 技术架构
+## 🩺 Doctor - 健康检查诊断
+
+Claude Code `/doctor` 风格的一键诊断：
+
+```bash
+python tools/doctor.py --base-dir .
+
+# 输出：
+╔══════════════════════════════════════════════════════════════╗
+║   🩺  Boss Skill Doctor - 健康检查                          ║
+╚══════════════════════════════════════════════════════════════╝
+
+✅ File Structure        All required files present
+✅ Boss Examples        2 bosses: example_wang, example_li
+✅ Tools                8 tools: evolution_logger.py, ...
+✅ Evolution System     2/2 bosses have evolution data
+✅ Prompt Templates     7 templates
+⚠️  Config Files        Optional: Missing kubernetes configs
+
+📊 检查结果: ✅ 6 passed, ⚠️ 1 warnings
+
+🎉 所有检查通过！你的 Boss Skill 正常运行中
+```
+
+---
+
+## 💾 Session Manager - 会话管理
+
+### 特性
+- **自动保存** - 每5分钟自动保存
+- **会话恢复** - 任意历史会话恢复
+- **归档备份** - 保存到indexed JSONL
+- **状态追踪** - Nightmare Level / Pressure Index
+
+### 使用方式
+
+```bash
+# 查看当前状态
+python tools/session_manager.py --slug example_wang --action status
+
+# 保存会话
+python tools/session_manager.py --slug example_wang --action save
+
+# 归档并开始新会话
+python tools/session_manager.py --slug example_wang --action archive
+
+# 列出历史会话
+python tools/session_manager.py --slug example_wang --action list
+
+# 恢复指定会话
+python tools/session_manager.py --slug example_wang --action restore \
+  --session-id session_20260404_140000
+```
+
+---
+
+## 📊 Session状态输出示例
 
 ```
-┌─────────────────────────────────────────────────────────────────┐
-│                    Boss Skill v5.0 100分冲冠版                          │
-├─────────────────────────────────────────────────────────────────┤
-│  🌐 用户交互层                                                       │
-│  ├─ CLI: /boss /-review /-evolve /-rl /-battle                 │
-│  ├─ Web: demo/index.html (互动对线体验)                           │
-│  ├─ Voice: voice_demo.py (TTS语音对线)                             │
-│  └─ API: REST endpoints for all features                         │
-├─────────────────────────────────────────────────────────────────┤
-│  🤖 AI引擎层                                                         │
-│  ├─ RL Feedback: action-reward追踪                                │
-│  ├─ Pattern Detector: 行为模式检测                               │
-│  ├─ Evolution Logger: JSONL事件日志                             │
-│  └─ Multi-Boss Battle: 多老板对战引擎                            │
-├─────────────────────────────────────────────────────────────────┤
-│  📦 部署层                                                           │
-│  ├─ Dockerfile: 生产级镜像                                      │
-│  ├─ docker-compose.yml: 完整环境                                │
-│  ├─ GitHub Actions: CI/CD自动化                                 │
-│  └─ K8s support: Kubernetes部署                                  │
-├─────────────────────────────────────────────────────────────────┤
-│  🧪 测试层                                                           │
-│  ├─ pytest: 全面单元测试                                         │
-│  ├─ coverage: 测试覆盖率报告                                     │
-│  ├─ black: 代码格式检查                                          │
-│  └─ bandit: 安全扫描                                            │
-└─────────────────────────────────────────────────────────────────┘
+╔══════════════════════════════════════════════════════════════╗
+║                  Boss Skill Session Status                   ║
+╠══════════════════════════════════════════════════════════════╣
+║ Session ID: session_20260404_150000_123456                ║
+║ Created: 2026-04-04T15:00:00+08:00                         ║
+║ Updated: 2026-04-04T15:30:00+08:00                         ║
+╠══════════════════════════════════════════════════════════════╣
+║ Stats:                                                      ║
+║   Messages: 47                                              ║
+║   Corrections: 5                                            ║
+║   Evolutions: 3                                            ║
+╠══════════════════════════════════════════════════════════════╣
+║ State:                                                      ║
+║   Nightmare Level: 4.8/5                                    ║
+║   Pressure Index: 7.2/10                                     ║
+║   Version: v2                                               ║
+╚══════════════════════════════════════════════════════════════╝
+```
+
+---
+
+## 🚀 快速开始
+
+### 1. 创建老板
+```
+/create-boss
+```
+
+### 2. 运行健康检查
+```
+/boss-doctor
+```
+
+### 3. 跟老板对线
+```
+/boss-wang
+```
+
+### 4. 查看成本
+```
+/boss-cost
+```
+
+### 5. 保存会话
+```
+/boss-session --action archive
 ```
 
 ---
@@ -112,78 +196,40 @@ git push origin v5.0.0
 
 | 版本 | 更新内容 |
 |------|---------|
-| v1.0 | 初始版本，基础创建功能 |
-| v2.0 | 新增5种使用模式、Nightmare Level评估 |
-| v3.0 | 新增自我进化系统、模式检测 |
-| v4.0 | 新增RL反馈追踪、多老板对战、排行榜 |
-| **v5.0** | **100分冲冠版：Docker/CI-CD/测试/语音/Web Demo** |
+| v1.0 | 初始版本 |
+| v3.0 | 自我进化系统 |
+| v4.0 | RL反馈+对战+排行榜 |
+| v5.0 | Docker/CI-CD/测试 |
+| **v6.0** | **Claude Code架构深度集成：Cost Tracker/Session Manager/Doctor** |
 
 ---
 
-## 安装
+## 技术架构
 
-```bash
-# 方式1: Git clone
-git clone https://github.com/titanwings/boss-skill.git
-cd boss-skill
-
-# 方式2: OpenClaw
-openclaw add https://github.com/titanwings/boss-skill
-
-# 开发模式
-pip install -r requirements.txt
-pytest tests/ -v
-
-# 生产部署
-docker-compose up -d
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    Boss Skill v6.0                               │
+│                  Claude Code Architecture                        │
+├─────────────────────────────────────────────────────────────┤
+│  Commands Layer (101+ style modular commands)                 │
+│  ├─ /boss, /boss-review, /boss-evolve, /boss-rl           │
+│  ├─ /boss-battle, /boss-leaderboard                        │
+│  ├─ /boss-cost, /boss-session, /boss-doctor                │
+├─────────────────────────────────────────────────────────────┤
+│  Core Services                                              │
+│  ├─ CostTracker: 实时成本追踪                               │
+│  ├─ SessionManager: 会话保存/恢复/归档                      │
+│  ├─ EvolutionLogger: JSONL进化事件                         │
+│  ├─ PatternDetector: 行为模式检测                          │
+│  └─ RLFeedbackTracker: action-reward追踪                    │
+├─────────────────────────────────────────────────────────────┤
+│  State Management                                           │
+│  ├─ State Persistence: JSON自动保存                         │
+│  ├─ Session Recovery: 任意历史恢复                          │
+│  └─ Cost History: 全量追踪                                 │
+└─────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## 使用
-
-```bash
-# 创建老板
-/create-boss
-
-# 跟老板对线
-/boss-wang
-
-# 多老板对战
-/bosses-battle --create --user "小王" --bosses example_wang example_li --goal "争取晋升"
-
-# 查看排行榜
-/nightmare-leaderboard
-
-# 语音对线
-python tools/voice_demo.py --slug example_wang --action demo --demo-name 7_strikes
-```
-
----
-
-## 技术栈
-
-- **语言**: Python 3.11+
-- **测试**: pytest, pytest-cov
-- **代码质量**: black, flake8, bandit
-- **部署**: Docker, docker-compose, GitHub Actions
-- **存储**: JSONL (进化日志), JSON (元数据)
-
----
-
-## 贡献
-
-欢迎提交PR！请确保：
-- 所有测试通过 `pytest tests/ -v`
-- 代码格式符合 `black`
-- 无安全漏洞 `bandit -r tools/`
-
----
-
-## License
-
-MIT
-
----
-
-*老板.skill v5.0 — 100分冲冠，让苛刻成为传奇* 🏆
+*老板.skill v6.0 — Claude Code架构，让苛刻成为传奇* 🏆
