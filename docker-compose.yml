@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  boss-skill:
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./bosses:/app/bosses
+      - ./evolutions:/app/evolutions
+    environment:
+      - BOSS_MODE=production
+      - NIGHTMARE_LEADERBOARD=true
+    restart: unless-stopped
+
+  # Optional: OpenClaw-RL backend for real training
+  openclaw-rl:
+    image: genverse/openclaw-rl:latest
+    ports:
+      - "8000:8000"
+    environment:
+      - MODEL_NAME=your-model
+      - GPU_ENABLED=true
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
