@@ -1,0 +1,27 @@
+{
+  "name": "李姐（示例）",
+  "slug": "example_li",
+  "created_at": "2026-04-04T06:35:00Z",
+  "updated_at": "2026-04-04T06:35:00Z",
+  "version": "v1",
+  "profile": {
+    "company": "某互联网公司",
+    "level": "M4",
+    "role": "运营总监",
+    "gender": "女",
+    "mbti": "INTJ",
+    "zodiac": "天蝎座"
+  },
+  "tags": {
+    "management_style": ["逻辑控制型", "分析型", "冷处理型"],
+    "pain_points": ["追问思路", "邮件格式", "数据控", "当众尴尬"],
+    "nightmare_level": "4/5"
+  },
+  "nightmare_stories": [
+    "方案评审被追问到说不出话，会议室沉默了30秒",
+    "邮件被退回重写3遍，每次都说'没有结论'",
+    "周会上被当众问'你的判断依据是什么'，答不上来"
+  ],
+  "knowledge_sources": [],
+  "corrections_count": 0
+}
