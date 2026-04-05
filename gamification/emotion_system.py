@@ -115,14 +115,16 @@ class EmotionSystem:
         """激怒老板"""
         self.state["anger_accumulator"] += intensity
         
-        # 根据累积值决定情绪
-        if self.state["anger_accumulator"] >= 8:
+        # 根据愤怒值决定情绪
+        # 愤怒值范围: 0=平静, 1-1=轻微, 2-3=焦虑, 4-7=生气, 8+=暴怒
+        anger = self.state.get("anger_accumulator", 0)
+        if anger >= 8:
             new_emotion = "furious"
-        elif self.state["anger_accumulator"] >= 5:
+        elif anger >= 4:
             new_emotion = "angry"
-        elif self.state["anger_accumulator"] >= 3:
+        elif anger >= 2:
             new_emotion = "anxious"
-        elif self.state["anger_accumulator"] <= -3:
+        elif anger <= -3:
             new_emotion = "happy"
         else:
             new_emotion = "neutral"
@@ -139,9 +141,9 @@ class EmotionSystem:
         anger = self.state.get("anger_accumulator", 0)
         if anger >= 8:
             return "furious"
-        elif anger >= 5:
+        elif anger >= 4:
             return "angry"
-        elif anger >= 3:
+        elif anger >= 2:
             return "anxious"
         elif anger <= -3:
             return "happy"

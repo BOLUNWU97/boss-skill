@@ -215,9 +215,9 @@ class SessionManager:
 ║   Evolutions: {meta['total_evolutions']:<44}║
 ╠══════════════════════════════════════════════════════════════╣
 ║ State:                                                      ║
-║   Nightmare Level: {state.get('nightmare_level', 'N/A'):<39}║
-║   Pressure Index: {state.get('pressure_index', 0):<40.1f}║
-║   Version: {state.get('version', 'v1'):<47}║
+║   Nightmare Level: {state.get('nightmare_level') or 'N/A':<39}║
+║   Pressure Index: {state.get('pressure_index') or 0:<40.1f}║
+║   Version: {state.get('version') or 'v1':<47}║
 ╚══════════════════════════════════════════════════════════════╝
 """)
         

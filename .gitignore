@@ -43,3 +43,8 @@ Thumbs.db
 tmp/
 temp/
 *.tmp
+
+# Boss Skill state files (runtime data)
+.boss/
+bosses/example_*/
+*.egg-info/
