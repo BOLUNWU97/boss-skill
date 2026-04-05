@@ -1,249 +1,236 @@
 ---
 name: create-boss
-description: "Distill your boss into an AI Skill. 越苛刻越好，支持持续进化、Claude Code架构深度集成。"
+description: "Distill your boss into an AI Skill. 越苛刻越好，支持持续进化、Claude Code架构深度集成、游戏化、社区系统、多模态输入。"
 argument-hint: "[boss-name-or-slug]"
-version: "6.0.0"
+version: 7.0.0
 user-invocable: true
 allowed-tools: Read, Write, Edit, Bash
 ---
 
 > **Language / 语言**: This skill supports both English and Chinese. Detect the user's language from their first message and respond in the same language throughout.
 
-# 老板.skill 创建器 v6.0
+# 老板.skill 创建器 v7.0
 
-> *让苛刻成为生产力 — Claude Code架构深度集成版* 🏆
-
----
-
-## 🎯 Claude Code架构深度集成
-
-| Claude Code特性 | Boss Skill集成 |
-|----------------|---------------|
-| **Cost Tracker** | ✅ 实时成本追踪，API调用统计 |
-| **Session Manager** | ✅ 会话保存/恢复/归档 |
-| **/doctor** | ✅ 健康检查诊断工具 |
-| **101 Commands** | ✅ 模块化命令系统 |
-| **State Persistence** | ✅ 状态持久化 |
-| **Health Monitor** | ✅ 系统健康监控 |
+> *让苛刻成为生产力 — 全功能版* 🏆
 
 ---
 
-## 核心工具
+## 🎯 版本说明
 
-| 工具 | 命令 | 说明 |
+**v7.0 全功能版** 新增：
+- 🎮 游戏化系统（难度等级/成就/XP）
+- 😤 情绪系统（老板心情影响反应）
+- 🌍 社区系统（分享/继承/投票）
+- 🖼️ 多模态输入（图片/截图）
+
+---
+
+## 核心工具一览
+
+| 类别 | 工具 | 命令 | 说明 |
+|------|------|------|------|
+| **基础** | cost_tracker.py | `/boss-cost` | 成本追踪 |
+| | session_manager.py | `/boss-session` | 会话管理 |
+| | doctor.py | `/boss-doctor` | 健康诊断 |
+| **执行** | ralplan_ralph.py | `/boss-mode` | 双层模式 |
+| **进化** | evolution_logger.py | `/boss-evolve` | 进化追踪 |
+| | pattern_detector.py | `/boss-patterns` | 模式检测 |
+| | rl_feedback.py | `/boss-rl` | RL反馈 |
+| **对战** | multi_boss_battle.py | `/boss-battle` | 多老板对战 |
+| | leaderboard.py | `/boss-leaderboard` | 排行榜 |
+| **游戏化** | game_master.py | `/game` | 游戏总控 |
+| | difficulty_system.py | `/game difficulty` | 难度等级 |
+| | achievement_system.py | `/game achievements` | 成就系统 |
+| | emotion_system.py | `/game emotion` | 情绪系统 |
+| **社区** | community_system.py | `/community` | 社区老板库 |
+| **多模态** | multimodal_input.py | (自动) | 图片处理 |
+
+---
+
+## 🎮 游戏化系统
+
+### 难度等级
+
+可选 1-5 级，老板从"温和"到"窒息"：
+
+| 等级 | 名称 | 描述 |
 |------|------|------|
-| **cost_tracker.py** | `/boss-cost` | 实时成本追踪 |
-| **session_manager.py** | `/boss-session` | 会话管理 |
-| **doctor.py** | `/boss-doctor` | 健康检查 |
-| **evolution_logger.py** | `/boss-evolve` | 进化追踪 |
-| **pattern_detector.py** | `/boss-patterns` | 模式检测 |
-| **rl_feedback.py** | `/boss-rl` | RL反馈 |
-| **multi_boss_battle.py** | `/boss-battle` | 多老板对战 |
-| **ralplan_ralph.py** | `/boss-mode` | 双层执行模式切换 |
-| **leaderboard.py** | `/boss-leaderboard` | 排行榜 |
+| 1 | 🌱 萌新 | 鼓励为主，新手入门 |
+| 2 | 🐣 入门 | 正常要求，合理反馈 |
+| 3 | 💼 正常 | 标准老板，职场常态 |
+| 4 | 🔥 地狱 | 高压追问，问题不断 |
+| 5 | ☠️ 窒息 | 究极挑战，极限测试 |
+
+```
+# 设置难度
+/game difficulty --level 5
+
+# 查看状态
+/game status
+```
+
+### 成就系统
+
+| 成就 | 描述 | XP奖励 |
+|------|------|--------|
+| ⏱️ 十分钟玩家 | 对线10分钟没崩溃 | 50 |
+| 🔥 三十分钟战士 | 对线30分钟依然坚挺 | 150 |
+| 💀 一小时存活 | 对线1小时见过地狱 | 500 |
+| ⚔️ 对线老手 | 对线10次 | 100 |
+| 💪 对线达人 | 对线50次 | 300 |
+| 🏆 对线王者 | 对线100次 | 1000 |
+| ✅ 方案通过 | 方案一次性通过审批 | 100 |
+| 📈 数据大师 | 用数据回答5连问 | 150 |
+| 🎯 完美应对 | 连续3次正确回答追问 | 80 |
+| ☠️ 五星噩梦 | 挑战最高难度并存活 | 500 |
+
+```
+# 查看成就
+/game achievements
+
+# 查看完整状态
+/game status
+```
+
+### 玩家等级
+
+- 每对线1次 = +10 XP
+- 每解锁成就 = 成就XP奖励
+- 100 XP 升级
+- 等级越高，难度锁定越高
 
 ---
 
-## 🎭 双层执行模式 (Ralplan + Ralph)
+## 😤 情绪系统
 
-借鉴 **oh-my-codex** 的双层执行架构：
+老板有情绪波动，心情影响反应：
+
+| 情绪 | 压力倍数 | 表扬概率 |
+|------|----------|----------|
+| 😊 心情好 | ×0.7 | 50% |
+| 😐 平常心 | ×1.0 | 15% |
+| 😰 焦虑 | ×1.3 | 5% |
+| 😡 生气 | ×1.6 | 2% |
+| 🤬 暴怒 | ×2.0 | 0% |
+
+**触发情绪变化：**
+- 失误 → 愤怒+2
+- 好的回应 → 冷静+1
+- 数据化回答 → 冷静+2
+
+```
+# 查看老板情绪
+/game emotion
+```
+
+---
+
+## 🎭 双层执行模式
+
+借鉴 oh-my-codex：
 
 | 模式 | 命令 | 角色 |
 |------|------|------|
-| **Ralplan** | `/boss {name} ralplan` | 老板=审批者，审方案、挑刺、质疑 |
-| **Ralph** | `/boss {name} ralph` | 老板=执行者，施压、追问、给指令 |
-| **Direct** | `/boss {name}` | 原有模式，直接对线 |
-
-### Ralplan 模式
-
-用户提交方案/周报/文档，老板以"审批者"身份审查：
-- 连环追问数据和逻辑
-- 挑战假设和风险
-- 打回修改或勉强通过
+| **Ralplan** | `/boss {name} ralplan` | 审批者，审方案、挑刺 |
+| **Ralph** | `/boss {name} ralph` | 执行者，施压、追问进度 |
+| **Direct** | `/boss {name}` | 直接对线 |
 
 ```
-/boss-wang ralplan
-> [粘贴方案内容]
-
-老板审阅意见：
-状态：❌ 打回修改
-主要问题：
-  1. 数据来源不明确，样本量多少？
-  2. 竞品分析缺失
-  3. 时间线没有缓冲
-老板批示："给我补充数据后再来"
-```
-
-### Ralph 模式
-
-用户汇报任务进展，老板以"老板视角"施压：
-- 追问具体进度和完成定义
-- 质疑延迟和卡点
-- 给出明确指令
-
-```
-/boss-wang ralph
-> 任务A遇到了技术难点...
-
-老板指令：
-当前进度：45%
-追问：
-  1. 什么难点？尝试过什么方案？
-  2. 为什么之前没发现这个问题？
-  3. 需要我协调什么资源？
-下一步指令：
-  • 明天上午10点前给我3个可选方案
-  • 每个方案标注优劣势和风险
-⚡ "不要只给我问题，给我问题+解决方案"
+/boss-wang ralplan  → 粘贴方案让老王审
+/boss-wang ralph    → 汇报任务让老王施压
 ```
 
 ---
 
-## 💰 Cost Tracker - Claude Code风格成本追踪
+## 🌍 社区系统
 
-### 实时成本显示
+分享你的老板到社区，或继承别人的：
 
 ```
-┌─────────────────────────────────────────┐
-│         Boss Skill Cost Tracker           │
-└─────────────────────────────────────────┘
-│ Session: session_20260404_150000        │
-│ Total Cost: $0.023456                  │
-│ Total Calls: 47                        │
-├─────────────────────────────────────────┤
-│ Tokens:                                   │
-│   Input:  12,345                        │
-│   Output: 67,890                         │
-├─────────────────────────────────────────┤
-│ By Action Type:                            │
-│   evolve  : $0.010234 (15 calls)
-│   feedback: $0.008765 (20 calls)
-│   battle  : $0.004457 (12 calls)
-└─────────────────────────────────────────┘
+# 查看社区状态
+/community status
+
+# 提交我的老板
+/submit-boss --name "老王" --nightmare 4.5
+
+# 继承别人的老板
+/inherit-boss <boss_id>
+
+# 投票
+/vote-boss <boss_id>
 ```
 
-### 使用方式
-
-```bash
-# 记录一次API调用
-python tools/cost_tracker.py --slug example_wang --action record \
-  --model claude-3-5-sonnet \
-  --input-tokens 1000 --output-tokens 500
-
-# 查看当前成本
-python tools/cost_tracker.py --slug example_wang --action show
-
-# 查看历史
-python tools/cost_tracker.py --slug example_wang --action history
-```
+**热门老板 TOP：**
+- 按票数排行
+- 按噩梦等级筛选
+- 可直接继承到你的列表
 
 ---
 
-## 🩺 Doctor - 健康检查诊断
+## 🖼️ 多模态输入
 
-Claude Code `/doctor` 风格的一键诊断：
+支持直接发送图片给老板看：
 
-```bash
-python tools/doctor.py --base-dir .
-
-# 输出：
-╔══════════════════════════════════════════════════════════════╗
-║   🩺  Boss Skill Doctor - 健康检查                          ║
-╚══════════════════════════════════════════════════════════════╝
-
-✅ File Structure        All required files present
-✅ Boss Examples        2 bosses: example_wang, example_li
-✅ Tools                8 tools: evolution_logger.py, ...
-✅ Evolution System     2/2 bosses have evolution data
-✅ Prompt Templates     7 templates
-⚠️  Config Files        Optional: Missing kubernetes configs
-
-📊 检查结果: ✅ 6 passed, ⚠️ 1 warnings
-
-🎉 所有检查通过！你的 Boss Skill 正常运行中
-```
-
----
-
-## 💾 Session Manager - 会话管理
-
-### 特性
-- **自动保存** - 每5分钟自动保存
-- **会话恢复** - 任意历史会话恢复
-- **归档备份** - 保存到indexed JSONL
-- **状态追踪** - Nightmare Level / Pressure Index
-
-### 使用方式
-
-```bash
-# 查看当前状态
-python tools/session_manager.py --slug example_wang --action status
-
-# 保存会话
-python tools/session_manager.py --slug example_wang --action save
-
-# 归档并开始新会话
-python tools/session_manager.py --slug example_wang --action archive
-
-# 列出历史会话
-python tools/session_manager.py --slug example_wang --action list
-
-# 恢复指定会话
-python tools/session_manager.py --slug example_wang --action restore \
-  --session-id session_20260404_140000
-```
-
----
-
-## 📊 Session状态输出示例
+- 截图直接丢给老板审
+- PPT截图也能看
+- 邮件截图解析
+- 文档图片化
 
 ```
-╔══════════════════════════════════════════════════════════════╗
-║                  Boss Skill Session Status                   ║
-╠══════════════════════════════════════════════════════════════╣
-║ Session ID: session_20260404_150000_123456                ║
-║ Created: 2026-04-04T15:00:00+08:00                         ║
-║ Updated: 2026-04-04T15:30:00+08:00                         ║
-╠══════════════════════════════════════════════════════════════╣
-║ Stats:                                                      ║
-║   Messages: 47                                              ║
-║   Corrections: 5                                            ║
-║   Evolutions: 3                                            ║
-╠══════════════════════════════════════════════════════════════╣
-║ State:                                                      ║
-║   Nightmare Level: 4.8/5                                    ║
-║   Pressure Index: 7.2/10                                     ║
-║   Version: v2                                               ║
-╚══════════════════════════════════════════════════════════════╝
+发送图片给老板即可，他会'看到'并评论
 ```
 
 ---
 
 ## 🚀 快速开始
 
-### 1. 创建老板
-```
+```bash
+# 1. 创建老板
 /create-boss
-```
 
-### 2. 运行健康检查
-```
-/boss-doctor
-```
+# 2. 查看游戏状态
+/game status
 
-### 3. 跟老板对线
-```
+# 3. 设置难度
+/game difficulty --level 4
+
+# 4. 开始对线
 /boss-wang
-```
 
-### 4. 查看成本
-```
+# 5. 查看成本
 /boss-cost
 ```
 
-### 5. 保存会话
+---
+
+## 📊 v7.0 技术架构
+
 ```
-/boss-session --action archive
+┌─────────────────────────────────────────────────────────────┐
+│                    Boss Skill v7.0 全功能版                      │
+├─────────────────────────────────────────────────────────────┤
+│  用户交互层                                                  │
+│  ├─ /boss, /ralplan, /ralph (双层执行)                     │
+│  ├─ /game, /community (游戏化+社区)                        │
+│  └─ /boss-cost, /session, /doctor (Claude Code风格)        │
+├─────────────────────────────────────────────────────────────┤
+│  🎮 游戏化层                                                 │
+│  ├─ DifficultySystem: 1-5级难度                            │
+│  ├─ AchievementSystem: 18+成就                            │
+│  ├─ EmotionSystem: 5级情绪                                │
+│  └─ GameMaster: 统一控制                                    │
+├─────────────────────────────────────────────────────────────┤
+│  🌍 社区层                                                   │
+│  └─ CommunitySystem: 提交/继承/投票                        │
+├─────────────────────────────────────────────────────────────┤
+│  🖼️ 多模态层                                                │
+│  └─ MultimodalProcessor: 图片处理                          │
+├─────────────────────────────────────────────────────────────┤
+│  核心服务层                                                  │
+│  ├─ CostTracker, SessionManager                            │
+│  ├─ EvolutionLogger, PatternDetector                       │
+│  └─ RLFeedbackTracker, MultiBossBattle                     │
+└─────────────────────────────────────────────────────────────┘
 ```
 
 ---
@@ -256,43 +243,10 @@ python tools/session_manager.py --slug example_wang --action restore \
 | v3.0 | 自我进化系统 |
 | v4.0 | RL反馈+对战+排行榜 |
 | v5.0 | Docker/CI-CD/测试 |
-| **v6.0** | Claude Code架构深度集成：Cost Tracker/Session Manager/Doctor |
-| **v6.1** | **oh-my-codex双层执行模式：Ralplan(审方案) + Ralph(施压)** |
+| v6.0 | Claude Code架构集成 |
+| v6.1 | oh-my-codex双层执行模式 |
+| **v7.0** | **全功能版：游戏化+情绪+社区+多模态** |
 
 ---
 
-## 技术架构
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│                    Boss Skill v6.1                               │
-│           Claude Code + oh-my-codex 双架构                     │
-├─────────────────────────────────────────────────────────────┤
-│  🎭 双层执行模式 (Ralplan + Ralph)                           │
-│  ├─ Ralplan: 方案审批 - 挑刺/质疑/追问数据                    │
-│  ├─ Ralph: 任务施压 - 质疑延迟/追问完成定义                  │
-│  └─ Direct: 直接对线 - 保留原有模式                           │
-├─────────────────────────────────────────────────────────────┤
-│  Commands Layer (101+ style modular commands)                 │
-│  ├─ /boss, /boss-review, /boss-evolve, /boss-rl           │
-│  ├─ /boss-battle, /boss-leaderboard                        │
-│  ├─ /boss-cost, /boss-session, /boss-doctor                │
-│  └─ /boss-mode: 双层模式切换                                 │
-├─────────────────────────────────────────────────────────────┤
-│  Core Services                                              │
-│  ├─ CostTracker: 实时成本追踪                               │
-│  ├─ SessionManager: 会话保存/恢复/归档                      │
-│  ├─ EvolutionLogger: JSONL进化事件                         │
-│  ├─ PatternDetector: 行为模式检测                          │
-│  └─ RLFeedbackTracker: action-reward追踪                    │
-├─────────────────────────────────────────────────────────────┤
-│  State Management                                           │
-│  ├─ State Persistence: JSON自动保存                         │
-│  ├─ Session Recovery: 任意历史恢复                          │
-│  └─ Cost History: 全量追踪                                 │
-└─────────────────────────────────────────────────────────────┘
-```
-
----
-
-*老板.skill v6.0 — Claude Code架构，让苛刻成为传奇* 🏆
+*老板.skill v7.0 — 让苛刻成为传奇* 🏆
