@@ -1,6 +1,18 @@
 # 老板.skill — 把老板蒸馏成AI，越苛刻越好
 
-> *让苛刻成为生产力 — 冲冠Hackathon版 v4.0* 🏆
+> *让苛刻成为生产力 — 双层执行模式 v6.1* 🏆
+
+---
+
+## 🎭 新增！Ralplan + Ralph 双层执行模式
+
+借鉴 **oh-my-codex** 架构，老板既能"审方案"又能"施压"：
+
+```
+/boss-wang ralplan   →  老板以审批者身份审方案、连环追问
+/boss-wang ralph     →  老板以老板视角施压、追问进度
+/boss-wang           →  直接对线（原有模式）
+```
 
 ---
 
@@ -21,7 +33,7 @@
 | 🤖 **RL反馈追踪** | 用强化学习思想追踪行为好坏 |
 | ⚔️ **多老板对战** | 模拟你+老板A vs 老板B场景 |
 | 🏆 **公开排行榜** | Nightmare Level 社区投票 |
-| 🎬 **视频演示脚本** | 60秒窒息老板演示 |
+| 🎭 **双层执行模式** | Ralplan审方案 + Ralph施压 ⭐NEW |
 
 ---
 
@@ -84,6 +96,8 @@ TOP 3：
 
 ```
 /boss-{slug}           — 跟老板对线
+/boss-{slug} ralplan   — 让老板审方案（审批者模式）
+/boss-{slug} ralph     — 让老板施压（执行者模式）
 /boss-{slug}-review   — 让老板审你的方案
 /boss-{slug}-weekly   — 让老板审你的周报
 ```
@@ -180,7 +194,9 @@ boss-skill/
 | v1.1 | 新增进化模式、邮件解析 |
 | v2.0 | 新增5种使用模式、Nightmare Level评估 |
 | v3.0 | 新增自我进化系统、模式检测 |
-| **v4.0** | **冲冠Hackathon版：RL反馈、多老板对战、排行榜** |
+| v4.0 | 冲冠Hackathon版：RL反馈、多老板对战、排行榜 |
+| v6.0 | Claude Code架构深度集成：Cost Tracker/Session Manager/Doctor |
+| **v6.1** | **oh-my-codex双层执行模式：Ralplan + Ralph** |
 
 ---
 

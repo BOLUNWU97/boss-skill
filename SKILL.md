@@ -39,7 +39,63 @@ allowed-tools: Read, Write, Edit, Bash
 | **pattern_detector.py** | `/boss-patterns` | 模式检测 |
 | **rl_feedback.py** | `/boss-rl` | RL反馈 |
 | **multi_boss_battle.py** | `/boss-battle` | 多老板对战 |
+| **ralplan_ralph.py** | `/boss-mode` | 双层执行模式切换 |
 | **leaderboard.py** | `/boss-leaderboard` | 排行榜 |
+
+---
+
+## 🎭 双层执行模式 (Ralplan + Ralph)
+
+借鉴 **oh-my-codex** 的双层执行架构：
+
+| 模式 | 命令 | 角色 |
+|------|------|------|
+| **Ralplan** | `/boss {name} ralplan` | 老板=审批者，审方案、挑刺、质疑 |
+| **Ralph** | `/boss {name} ralph` | 老板=执行者，施压、追问、给指令 |
+| **Direct** | `/boss {name}` | 原有模式，直接对线 |
+
+### Ralplan 模式
+
+用户提交方案/周报/文档，老板以"审批者"身份审查：
+- 连环追问数据和逻辑
+- 挑战假设和风险
+- 打回修改或勉强通过
+
+```
+/boss-wang ralplan
+> [粘贴方案内容]
+
+老板审阅意见：
+状态：❌ 打回修改
+主要问题：
+  1. 数据来源不明确，样本量多少？
+  2. 竞品分析缺失
+  3. 时间线没有缓冲
+老板批示："给我补充数据后再来"
+```
+
+### Ralph 模式
+
+用户汇报任务进展，老板以"老板视角"施压：
+- 追问具体进度和完成定义
+- 质疑延迟和卡点
+- 给出明确指令
+
+```
+/boss-wang ralph
+> 任务A遇到了技术难点...
+
+老板指令：
+当前进度：45%
+追问：
+  1. 什么难点？尝试过什么方案？
+  2. 为什么之前没发现这个问题？
+  3. 需要我协调什么资源？
+下一步指令：
+  • 明天上午10点前给我3个可选方案
+  • 每个方案标注优劣势和风险
+⚡ "不要只给我问题，给我问题+解决方案"
+```
 
 ---
 
@@ -200,7 +256,8 @@ python tools/session_manager.py --slug example_wang --action restore \
 | v3.0 | 自我进化系统 |
 | v4.0 | RL反馈+对战+排行榜 |
 | v5.0 | Docker/CI-CD/测试 |
-| **v6.0** | **Claude Code架构深度集成：Cost Tracker/Session Manager/Doctor** |
+| **v6.0** | Claude Code架构深度集成：Cost Tracker/Session Manager/Doctor |
+| **v6.1** | **oh-my-codex双层执行模式：Ralplan(审方案) + Ralph(施压)** |
 
 ---
 
@@ -208,13 +265,19 @@ python tools/session_manager.py --slug example_wang --action restore \
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                    Boss Skill v6.0                               │
-│                  Claude Code Architecture                        │
+│                    Boss Skill v6.1                               │
+│           Claude Code + oh-my-codex 双架构                     │
+├─────────────────────────────────────────────────────────────┤
+│  🎭 双层执行模式 (Ralplan + Ralph)                           │
+│  ├─ Ralplan: 方案审批 - 挑刺/质疑/追问数据                    │
+│  ├─ Ralph: 任务施压 - 质疑延迟/追问完成定义                  │
+│  └─ Direct: 直接对线 - 保留原有模式                           │
 ├─────────────────────────────────────────────────────────────┤
 │  Commands Layer (101+ style modular commands)                 │
 │  ├─ /boss, /boss-review, /boss-evolve, /boss-rl           │
 │  ├─ /boss-battle, /boss-leaderboard                        │
 │  ├─ /boss-cost, /boss-session, /boss-doctor                │
+│  └─ /boss-mode: 双层模式切换                                 │
 ├─────────────────────────────────────────────────────────────┤
 │  Core Services                                              │
 │  ├─ CostTracker: 实时成本追踪                               │
