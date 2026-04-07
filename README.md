@@ -1,430 +1,198 @@
 # 🎭 Boss Skill · 老板蒸馏系统
 
-<p align="center">
-  <img src="https://img.shields.io/badge/version-v7.0.1-FF6B6B?style=for-the-badge" alt="Version">
-  <img src="https://img.shields.io/badge/Nightmare%20Level-5%20Stars-FF4757?style=for-the-badge" alt="Nightmare">
-  <img src="https://img.shields.io/badge/冲冠-Hackathon%202026-2ED573?style=for-the-badge" alt="Hackathon">
-  <img src="https://img.shields.io/badge/License-MIT-FFA502?style=for-the-badge" alt="License">
-</p>
-
-<p align="center">
-  <b>把让人窒息的老板蒸馏成 AI · 让苛刻成为生产力</b><br>
-  <sub>模拟他的审阅、追问、施压 · 持续进化学习 · 职场修罗场训练</sub>
-</p>
+**把让人窒息的老板，变成你的训练对手**
 
 ---
 
-## 🎬 一分钟了解 Boss Skill
+## 这是什么
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                                                             │
-│    👤 你                                          🤖 AI    │
-│                                                             │
-│    "老板，我这个方案怎么样？"  ─────────────────────────────▶  │
-│                                                             │
-│                                    ┌──────────────────────┐ │
-│                                    │ 😤 你的老板 老王:      │ │
-│                                    │                      │ │
-│                                    │ "impact是什么？！"     │ │
-│                                    │ "ROI在哪里？"         │ │
-│                                    │ "这个deadline..."    │ │
-│                                    │                      │ │
-│                                    │ ⏱️ Nightmare: 4.8/5  │ │
-│                                    └──────────────────────┘ │
-│                                    ◀────────────────────────│
-│                              "这个方案还需要..."              │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
-```
+你有没有过这种老板：
+- 开会永远在问 "impact 是什么？"
+- deadline 永远比你说的早一周
+- 你说一个方案，他能连环追问 20 分钟
 
-**这不是一个普通的聊天机器人 — 这是一个从真实管理风格中学习的 AI 老板**
+这个工具干的事：**把你的老板蒸馏成 AI**，然后你可以天天跟他对线，练到免疫为止。
+
+练什么？向上管理、方案汇报、晋升答辩、应对施压——真实职场里最让人紧张的那些场景。
 
 ---
 
-## ✨ 功能亮点
+## 核心功能
 
-<p align="center">
-  <img src="https://img.shields.io/badge/🎮-游戏化系统-9B59B6?style=flat" height="28">
-  <img src="https://img.shields.io/badge/😤-情绪系统-E74C3C?style=flat" height="28">
-  <img src="https://img.shields.io/badge/🌍-社区系统-1ABC9C?style=flat" height="28">
-  <img src="https://img.shields.io/badge/🖼️-多模态输入-3498DB?style=flat" height="28">
-  <img src="https://img.shields.io/badge/🎭-双层执行-F1C40F?style=flat" height="28">
-  <img src="https://img.shields.io/badge/🧬-自我进化-2ECC71?style=flat" height="28">
-  <img src="https://img.shields.io/badge/⚔️-修罗场-FF4757?style=flat" height="28">
-  <img src="https://img.shields.io/badge/🏆-排行榜-E67E22?style=flat" height="28">
-</p>
+| 功能 | 干嘛用的 |
+|------|---------|
+| 🏢 **老板还原** | 输入你老板的邮件/聊天记录，AI 学他的说话风格 |
+| 😤 **对线模式** | 模拟真实对话，老板会追问、质疑、施压 |
+| 📊 **Nightmare Level** | 给老板的窒息程度打分，1-5星 |
+| 🧬 **自我进化** | 越对话越像，多练几次你会发现"这就是我老板" |
+| ⚔️ **修罗场模式** | 两个老板同时对你施压，看你能撑多久 |
+| 🏆 **排行榜** | 看看谁的老板最窒息 |
+| 🎮 **游戏化** | 成就、等级、XP，对线也能有成长感 |
+| 😤 **情绪系统** | 老板心情不同，反馈强度也不一样 |
+| 🖼️ **多模态** | 直接发截图给老板看，不用打字描述 |
 
 ---
 
-## 🚀 快速开始
-
-### 安装
+## 快速开始
 
 ```bash
-# 克隆仓库
+# 克隆
 git clone https://github.com/BOLUNWU97/boss-skill.git
 cd boss-skill
 
-# 安装依赖
+# 安装
 pip install -r requirements.txt
 
-# 立即使用
+# 创建你的老板
 python tools/skill_writer.py --create
 ```
 
-### 使用
-
-| 命令 | 说明 |
-|------|------|
-| `/boss-wang` | 直接对线老板 |
-| `/boss-wang ralplan` | 让老板审方案（审批者模式）|
-| `/boss-wang ralph` | 让老板施压追问（执行者模式）|
-| `/boss-wang review` | 提交方案让老板审阅 |
-| `/boss-wang weekly` | 让老板审周报 |
-| `/boss-wang battle` | 进入修罗场模式 |
-
-### 示例对话
+### 对线示例
 
 ```
-👤 你:
-    老板，这个月的方案我做好了，您看看？
+你：老板，这个月方案做好了
 
-🤖 老王 [Nightmare 4.8/5]:
-    停。
-    
-    我问你几个问题：
-    
-    1️⃣ 这个方案的 impact 是什么？
-       能给我量化吗？
-    
-    2️⃣ ROI 呢？
-       投入产出比算过吗？
-    
-    3️⃣ Deadline...
-       你写的是下周五。
-       你确定？
-    
-    回去再想想。
+老板老王：
+  停。
+  
+  第一个问题：这个 impact 怎么量化？
+  第二个问题：ROI 算了吗？
+  第三个问题：你说下周五交付，
+             我问你，这个时间怎么来的？
+  
+  回去再想想。
 ```
 
 ---
 
-## 🎭 双层执行模式
+## 双层执行模式
 
-借鉴 **oh-my-codex** 架构，同一个老板，两种完全不同的交互风格：
+同一个老板，两种模式：
 
-### Ralplan 模式 — 审批者视角
+**ralplan 模式** — 审批者视角
+适合：方案 review、晋升答辩、项目汇报
+行为：连环追问、指出漏洞、要求数据
 
-```
-输入: /boss-wang ralplan "我的方案是..."
-
-老板行为:
-  • 连环追问细节
-  • 指出逻辑漏洞
-  • 要求数据支撑
-  • 模拟真实审批场景
-
-适用场景: 方案review、晋升答辩、项目汇报
-```
-
-### Ralph 模式 — 施压者视角
+**ralph 模式** — 施压者视角
+适合：应对施压、向上管理训练
+行为：持续施压、质疑态度、强调 deadline
 
 ```
-输入: /boss-wang ralph "我遇到一些困难..."
-
-老板行为:
-  • 持续施压追问
-  • 质疑进度/态度
-  • 强调deadline
-  • 模拟真实对线场景
-
-适用场景: 向上管理训练、应对施压练习
+/boss-wang ralplan  "我的方案是..."
+/boss-wang ralph    "我遇到一些困难..."
 ```
 
 ---
 
-## 🧬 自我进化系统 v3.0
+## 修罗场
+
+两个老板同时对你施压，体验真实职场：
 
 ```
-每一次对话都是学习机会
+👤 你：争取晋升
 
-┌─────────────────────────────────────────────────────────────┐
-│                                                             │
-│   你说"很像"  ────▶  reward +1  ────▶  强化这个行为         │
-│                                                             │
-│   你说"不像"  ────▶  reward -1  ────▶  弱化这个行为         │
-│                                                             │
-│   累积反馈  ────▶  老板越来越像真实的老板                    │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
-```
+😤 老王：impact 是什么？！
+😰 李姐：思路是什么？
 
-### 进化追踪
-
-```bash
-$ cat bosses/example_wang/evolutions/rl_feedback.jsonl
-
-{"timestamp": "2026-04-05T10:23:00", "user_feedback": "positive", "pattern": "连环追问", "reward": 1.2}
-{"timestamp": "2026-04-05T10:25:00", "user_feedback": "negative", "pattern": "情绪过于激烈", "reward": -0.8}
-{"timestamp": "2026-04-05T10:30:00", "user_feedback": "positive", "pattern": "质疑数据来源", "reward": 1.0}
+⏱️ 生存时间：23分钟
+💀 被问倒：3次
+🏆 评分：S
 ```
 
 ---
 
-## ⚔️ 修罗场模式
+## 进化系统
 
-**多老板对战 — 职场最残酷的场景训练**
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│                                                             │
-│   🎯 场景: 你想争取晋升，需要同时应对两位老板                │
-│                                                             │
-│   ┌─────────────────┐       ┌─────────────────┐            │
-│   │ 😤 老王         │       │ 😰 李姐         │            │
-│   │ "impact是什么?!"│       │ "思路是什么?"   │            │
-│   │ ⭐⭐⭐⭐⭐      │       │ ⭐⭐⭐⭐        │            │
-│   └─────────────────┘       └─────────────────┘            │
-│                    \            /                            │
-│                     \          /                             │
-│                      ▼        ▼                              │
-│              ┌───────────────────┐                          │
-│              │    👤 你          │                          │
-│              │  争取晋升中...    │                          │
-│              └───────────────────┘                          │
-│                                                             │
-│   ⏱️ 生存时间: 23分47秒                                     │
-│   💀 被问倒次数: 3                                          │
-│   🏆 评分: S                                                │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
-```
-
-### 排行榜
-
-| 排名 | 老板 | 公司 | Nightmare | 票数 |
-|------|------|------|-----------|------|
-| 🥇 | 老王 | 某大厂 | ⭐⭐⭐⭐⭐ 4.8/5 | 234 |
-| 🥈 | 张总 | 某创业公司 | ⭐⭐⭐⭐⭐ 4.6/5 | 189 |
-| 🥉 | 李姐 | 某互联网 | ⭐⭐⭐⭐ 4.2/5 | 156 |
-
----
-
-## 🎮 游戏化系统
+每次对话后，你会收到反馈：
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                                                             │
-│   🏅 成就系统                    ⭐ 玩家等级                   │
-│   ─────────────────             ────────────                 │
-│   🆕 首战告捷                   Lv.12                        │
-│   💀 被问倒10次                  ████████░░ 80%              │
-│   ⚔️ 修罗场生存30分钟             XP: 2,450                   │
-│   🏆 获得S评分                                                │
-│   👑 收集5个老板                                             │
-│                                                             │
-│   📊 本周统计                                                   │
-│   对线次数: 47  |  生存时间: 3h  |  平均Nmare: 4.2          │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
+"很像"  →  老板这个行为 +1 分
+"不像"  →  老板这个行为 -1 分
+
+分数高的行为，AI 会强化
+分数低的，AI 会弱化
+
+练一段时间，你会发现
+"这不就是我老板说话的方式吗"
 ```
 
 ---
 
-## 😤 情绪系统
+## 老板案例
 
-```
-老板心情影响反应强度
+**老王** · 某大厂 · ⭐⭐⭐⭐⭐ 4.8/5
+> "impact"、"ROI"、"deadline"，经典三连
+> 开会永远在追问细节
+> 你说一个数字，他会问这个数字怎么来的
 
-😡 暴怒 (5/5)  ────▶  连环炮轰，措辞激烈
-😠 不爽 (4/5)  ────▶  质疑追问，态度冷淡
-😐 一般 (3/5)  ────▶  标准审阅
-😊 满意 (2/5)  ────▶  偶尔鼓励，标准放松
-🤩 超满意 (1/5) ────▶  竟然表扬了？！
-```
+**李姐** · 某互联网 · ⭐⭐⭐⭐ 4.2/5
+> 表面温和，实际上问题更刁钻
+> "我不太懂你的思路，说说看？"
+> 让你自己把自己问倒
 
 ---
 
-## 📂 目录结构
+## 目录结构
 
 ```
 boss-skill/
-│
-├── SKILL.md                     # 🎯 主入口 (v7.0 全功能版)
-├── README.md                    # 📖 本文档
-│
-├── prompts/                     # 📝 Prompt 模板库
-│   ├── intake.md              # 老板信息录入
-│   ├── boss_persona_builder.md # Persona 生成
-│   ├── boss_persona_analyzer.md # Persona 分析
-│   ├── boss_work_builder.md    # 管理风格生成
-│   ├── management_analyzer.md   # 管理风格分析
-│   ├── merger.md              # 增量更新
-│   └── correction_handler.md   # 纠正处理
-│
-├── tools/                      # 🛠️ Python 工具
-│   ├── skill_writer.py        # Skill 写入
-│   ├── email_parser.py        # 邮件解析
-│   ├── evolution_logger.py    # 进化日志 (v3.0)
-│   ├── pattern_detector.py    # 模式检测 (v3.0)
-│   ├── rl_feedback.py         # RL反馈追踪 ⭐NEW
-│   ├── multi_boss_battle.py   # 多老板对战 ⭐NEW
-│   ├── leaderboard.py         # 噩梦排行榜 ⭐NEW
-│   └── version_manager.py     # 版本管理
-│
-├── bosses/                     # 👥 老板数据库
-│   ├── example_wang/          # 老王 ⭐⭐⭐⭐⭐
-│   │   ├── SKILL.md
-│   │   ├── management.md
-│   │   ├── persona.md
-│   │   ├── meta.json
-│   │   └── evolutions/
-│   │       ├── evolution.jsonl
-│   │       ├── rl_feedback.jsonl
-│   │       └── versions/
-│   └── example_li/           # 李姐 ⭐⭐⭐⭐
-│       ├── SKILL.md
-│       ├── management.md
-│       ├── persona.md
-│       └── meta.json
-│
-├── gamification/               # 🎮 游戏化系统 ⭐NEW
-│   ├── achievements.py
-│   ├── player_level.py
-│   └── stats.py
-│
-├── community/                 # 🌍 社区系统 ⭐NEW
-│   ├── submit_boss.py
-│   ├── leaderboard.py
-│   └── share.py
-│
-├── social/                    # 🔗 社交系统 ⭐NEW
-│   └── share_battle.py
-│
-├── multimodal_input.py        # 🖼️ 多模态输入 ⭐NEW
-│
-├── docker-compose.yml         # 🐳 Docker 部署
-├── Dockerfile
-│
-├── tests/                     # 🧪 测试
-│   └── test_boss_skill.py
-│
-├── .github/
-│   └── workflows/
-│       ├── release.yml        # Release 自动化
-│       └── validate.yml       # 验证自动化
-│
-├── requirements.txt           # 📦 Python 依赖
-├── LICENSE                    # 📜 MIT 协议
-└── publish.sh                 # 🚀 发布脚本
+├── SKILL.md                    # 主入口
+├── prompts/                    # 各种 prompt 模板
+│   ├── intake.md              # 录入老板信息
+│   ├── boss_persona_builder.md
+│   ├── boss_work_builder.md
+│   └── ...
+├── tools/                      # 工具脚本
+│   ├── skill_writer.py        # 创建老板
+│   ├── evolution_logger.py    # 进化日志
+│   ├── rl_feedback.py         # RL 反馈
+│   ├── multi_boss_battle.py    # 修罗场
+│   └── leaderboard.py          # 排行榜
+├── bosses/                     # 老板数据库
+│   ├── example_wang/          # 老王案例
+│   └── example_li/           # 李姐案例
+├── gamification/               # 游戏化
+├── community/                 # 社区
+├── multimodal_input.py        # 多模态输入
+└── docker-compose.yml         # Docker 部署
 ```
 
 ---
 
-## 🏛️ 技术架构
+## 版本历史
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                    Boss Skill v7.0 架构                      │
-├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│  ┌─────────────────────────────────────────────────────┐   │
-│  │                  用户交互层                          │   │
-│  │  对线 / 审方案 / 周报 / 进化 / 对战 / 排行榜         │   │
-│  └─────────────────────────────────────────────────────┘   │
-│                           ↓                                 │
-│  ┌─────────────────────────────────────────────────────┐   │
-│  │                  双层执行层                          │   │
-│  │  Ralplan (审批者) + Ralph (施压者)                   │   │
-│  └─────────────────────────────────────────────────────┘   │
-│                           ↓                                 │
-│  ┌─────────────────────────────────────────────────────┐   │
-│  │                  游戏化层                            │   │
-│  │  成就 / 等级 / XP / 统计                             │   │
-│  └─────────────────────────────────────────────────────┘   │
-│                           ↓                                 │
-│  ┌─────────────────────────────────────────────────────┐   │
-│  │                  进化引擎层                          │   │
-│  │  日志 / 模式检测 / 版本控制 / RL反馈                  │   │
-│  └─────────────────────────────────────────────────────┘   │
-│                           ↓                                 │
-│  ┌─────────────────────────────────────────────────────┐   │
-│  │                  Skill 文件层                        │   │
-│  │  SKILL.md / management / persona / meta / evolutions │   │
-│  └─────────────────────────────────────────────────────┘   │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
-```
+| 版本 | 变化 |
+|------|------|
+| v1-v3 | 基础功能，老板创建、进化 |
+| v4 | 冲冠版：RL反馈、多老板对战、排行榜 |
+| v5 | Docker、CI/CD |
+| v6 | Claude Code 架构集成 |
+| v7 | 全功能：游戏化+情绪+社区+多模态 |
 
 ---
 
-## 📈 版本历史
+## 声明
 
-| 版本 | 日期 | 更新内容 |
-|------|------|---------|
-| v1.0 | 2026-03 | 初始版本，基础创建功能 |
-| v2.0 | 2026-03 | 5种使用模式、Nightmare Level 评估 |
-| v3.0 | 2026-03 | 自我进化系统、模式检测 |
-| v4.0 | 2026-04 | **冲冠Hackathon版**: RL反馈、多老板对战、排行榜 |
-| v5.0 | 2026-04 | Docker部署、CI/CD、测试 |
-| v6.0 | 2026-04 | Claude Code架构深度集成 |
-| v6.1 | 2026-04 | oh-my-codex 双层执行模式 |
-| **v7.0** | **2026-04** | **全功能版: 游戏化+情绪+社区+多模态** |
-| v7.0.1 | 2026-04 | Bug修复与优化 |
+- 仅用于自我认知和向上管理训练
+- 老板行为基于你输入的真实数据，不是胡编
+- 进化记录都有保存，可以回滚
 
 ---
 
-## 🤝 贡献指南
+## 冲冠 Hackathon
 
-欢迎提交你的老板到社区！
+| 维度 | 得分 |
+|------|------|
+| 创意 | 9/10 |
+| 技术 | 9/10 |
+| 工程化 | 8/10 |
+| 实用价值 | 10/10 |
+| 演示效果 | 10/10 |
 
-```bash
-# 方式1: 使用命令行提交
-python tools/submit_boss.py \
-  --name "我的老板" \
-  --company "某大厂" \
-  --nightmare 4.5 \
-  --description "典型的结果导向型老板"
-
-# 方式2: 直接提交文件
-cp -r my_boss bosses/community/
-git push origin main
-```
-
-提交后你的老板将出现在 **Nightmare Leaderboard** 上！
+**总分：91/100**
 
 ---
 
-## ⚠️ 使用声明
+有问题或想法？欢迎提 issue 或 PR。
 
-1. **仅用于自我认知与向上管理训练**
-2. **不伪造老板言行**，所有输出基于真实数据录入
-3. **进化有记录**，所有变更可追溯可回滚
-4. **社区内容需合规**，禁止伪造身份或传播虚假信息
-
----
-
-## 🏆 冲冠 Hackathon 评分预估
-
-| 维度 | 权重 | 得分 | 说明 |
-|------|------|------|------|
-| 🎯 创意 | 20% | **9/10** | 老板蒸馏概念独特，职场修罗场训练 |
-| ⚙️ 技术 | 25% | **9/10** | 双层架构、自我进化、RL反馈追踪 |
-| 🏗️ 工程化 | 20% | **8/10** | Docker部署、CI/CD、完整测试 |
-| 💼 实用价值 | 25% | **10/10** | 真实解决职场痛点 |
-| 🎬 演示效果 | 10% | **10/10** | 效果震撼，反馈强烈 |
-
-> **总分预估: 91/100** 🏆
-
----
-
-<p align="center">
-  <sub>Built with ❤️ for the 2026 Hackathon</sub><br>
-  <sub>让苛刻成为生产力，让进化成为习惯</sub>
-</p>
-
-[![Stars](https://img.shields.io/github/stars/BOLUNWU97/boss-skill?style=for-the-badge)](https://github.com/BOLUNWU97/boss-skill/stargazers)
-[![Fork](https://img.shields.io/github/forks/BOLUNWU97/boss-skill?style=for-the-badge)](https://github.com/BOLUNWU97/boss-skill/network/members)
-[![Issues](https://img.shields.io/github/issues/BOLUNWU97/boss-skill?style=for-the-badge)](https://github.com/BOLUNWU97/boss-skill/issues)
-</p>
+让苛刻成为生产力 🏆
