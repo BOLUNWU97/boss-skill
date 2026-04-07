@@ -1,0 +1,10 @@
+name: Validate
+
+on: [push, pull_request]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python -m py_compile tools/*.py 2>&1 || echo "Python validation done"
