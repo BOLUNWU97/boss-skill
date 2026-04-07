@@ -1,206 +1,199 @@
-# 🎭 Boss Skill
+# 老板.skill 🎭
 
-[![Stars](https://img.shields.io/github/stars/BOLUNWU97/boss-skill?style=for-the-badge)](https://github.com/BOLUNWU97/boss-skill/stargazers)
-[![Forks](https://img.shields.io/github/forks/BOLUNWU97/boss-skill?style=for-the-badge)](https://github.com/BOLUNWU97/boss-skill/network/members)
-[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
+> **Topics:** `hackathon` `老板AI` `角色扮演` `RL反馈` `生产力` `面试训练`
 
-> 🎮 **[Live Demo](https://bolunwu97.github.io/boss-skill/demo/)** — 不想看文档？直接体验老板对线
+> *把老板蒸馏成AI，让苛刻成为生产力*
 
----
+[![Version](https://img.shields.io/badge/version-7.0.0-blue.svg)](https://github.com/Bolun-wu/boss-skill)
+[![Platform](https://img.shields.io/badge/platform-OpenClaw-green.svg)](https://clawhub.ai)
+[![License](https://img.shields.io/badge/license-MIT-yellow.svg)](LICENSE)
 
-**把让人窒息的老板，变成你的训练对手**
+## 一句话简介
 
----
-
-## 这是什么
-
-你有没有过这种老板：
-- 开会永远在问 "impact 是什么？"
-- deadline 永远比你说的早一周
-- 你说一个方案，他能连环追问 20 分钟
-
-这个工具干的事：**把你的老板蒸馏成 AI**，然后你可以天天跟他对线，练到免疫为止。
-
-练什么？向上管理、方案汇报、晋升答辩、应对施压——真实职场里最让人紧张的那些场景。
+**把真实老板蒸馏成AI，支持游戏化对战、情绪系统、社区分享和多模态输入** — 越苛刻越好。
 
 ---
 
-## 核心功能
+## 功能说明
 
-| 功能 | 干嘛用的 |
-|------|---------|
-| 🏢 **老板还原** | 输入你老板的邮件/聊天记录，AI 学他的说话风格 |
-| 😤 **对线模式** | 模拟真实对话，老板会追问、质疑、施压 |
-| 📊 **Nightmare Level** | 给老板的窒息程度打分，1-5星 |
-| 🧬 **自我进化** | 越对话越像，多练几次你会发现"这就是我老板" |
-| ⚔️ **修罗场模式** | 两个老板同时对你施压，看你能撑多久 |
-| 🏆 **排行榜** | 看看谁的老板最窒息 |
-| 🎮 **游戏化** | 成就、等级、XP，对线也能有成长感 |
-| 😤 **情绪系统** | 老板心情不同，反馈强度也不一样 |
-| 🖼️ **多模态** | 直接发截图给老板看，不用打字描述 |
+`boss-skill` 是一个全功能的老板AI模拟器，将你的真实老板（或自定义角色）蒸馏成可对线的AI助手。它不只是问答，而是一个完整的游戏化对战系统，支持：
+
+- 🎮 **游戏化对战** — 难度等级（1-5级）、成就系统、XP升级
+- 😤 **情绪系统** — 老板有心情波动，影响对你的反应
+- 🌍 **社区系统** — 分享/继承/投票热门老板
+- 🖼️ **多模态输入** — 直接发截图给老板看
+- 🔄 **双层执行模式** — Ralplan（审方案）和 Ralph（施压追问）两种模式
+- 📊 **Claude Code风格工具** — 成本追踪、会话管理、健康诊断
+- 🐺 **多老板对战** — 修罗场模式，多个老板轮流施压
 
 ---
 
-## 快速开始
+## 安装方法
 
 ```bash
-# 克隆
-git clone https://github.com/BOLUNWU97/boss-skill.git
+# 通过 OpenClaw 安装
+openclaw skills install boss-skill
+
+# 或从源码安装
+git clone https://github.com/Bolun-wu/boss-skill.git
 cd boss-skill
-
-# 安装
-pip install -r requirements.txt
-
-# 创建你的老板
-python tools/skill_writer.py --create
 ```
 
-### 对线示例
+## 使用方法
 
-```
-你：老板，这个月方案做好了
+### 快速开始
 
-老板老王：
-  停。
-  
-  第一个问题：这个 impact 怎么量化？
-  第二个问题：ROI 算了吗？
-  第三个问题：你说下周五交付，
-             我问你，这个时间怎么来的？
-  
-  回去再想想。
-```
+```bash
+# 1. 创建老板
+/create-boss
 
----
+# 2. 查看游戏状态
+/game status
 
-## 双层执行模式
+# 3. 设置难度（1-5级）
+/game difficulty --level 4
 
-同一个老板，两种模式：
+# 4. 开始对线
+/boss-wang
 
-**ralplan 模式** — 审批者视角
-适合：方案 review、晋升答辩、项目汇报
-行为：连环追问、指出漏洞、要求数据
-
-**ralph 模式** — 施压者视角
-适合：应对施压、向上管理训练
-行为：持续施压、质疑态度、强调 deadline
-
-```
-/boss-wang ralplan  "我的方案是..."
-/boss-wang ralph    "我遇到一些困难..."
+# 5. 查看成本
+/boss-cost
 ```
 
----
+### 双层执行模式
 
-## 修罗场
+| 模式 | 命令 | 角色 |
+|------|------|------|
+| **Ralplan** | `/boss {name} ralplan` | 审批者，审方案、挑刺 |
+| **Ralph** | `/boss {name} ralph` | 执行者，施压、追问进度 |
+| **Direct** | `/boss {name}` | 直接对线 |
 
-两个老板同时对你施压，体验真实职场：
-
-```
-👤 你：争取晋升
-
-😤 老王：impact 是什么？！
-😰 李姐：思路是什么？
-
-⏱️ 生存时间：23分钟
-💀 被问倒：3次
-🏆 评分：S
+```bash
+/boss-wang ralplan  → 粘贴方案让老王审
+/boss-wang ralph    → 汇报任务让老王施压
 ```
 
----
+### 游戏化系统
 
-## 进化系统
+```bash
+# 查看成就
+/game achievements
 
-每次对话后，你会收到反馈：
+# 查看老板情绪
+/game emotion
 
+# 查看排行榜
+/boss-leaderboard
 ```
-"很像"  →  老板这个行为 +1 分
-"不像"  →  老板这个行为 -1 分
 
-分数高的行为，AI 会强化
-分数低的，AI 会弱化
+### 社区系统
 
-练一段时间，你会发现
-"这不就是我老板说话的方式吗"
+```bash
+# 查看社区状态
+/community status
+
+# 提交我的老板
+/submit-boss --name "老王" --nightmare 4.5
+
+# 继承别人的老板
+/inherit-boss <boss_id>
 ```
 
 ---
 
-## 老板案例
+## 难度等级
 
-**老王** · 某大厂 · ⭐⭐⭐⭐⭐ 4.8/5
-> "impact"、"ROI"、"deadline"，经典三连
-> 开会永远在追问细节
-> 你说一个数字，他会问这个数字怎么来的
-
-**李姐** · 某互联网 · ⭐⭐⭐⭐ 4.2/5
-> 表面温和，但实际上问题更刁钻
-> "我不太懂你的思路，说说看？"
-> 让你自己把自己问倒
+| 等级 | 名称 | 描述 |
+|------|------|------|
+| 1 | 🌱 萌新 | 鼓励为主，新手入门 |
+| 2 | 🐣 入门 | 正常要求，合理反馈 |
+| 3 | 💼 正常 | 标准老板，职场常态 |
+| 4 | 🔥 地狱 | 高压追问，问题不断 |
+| 5 | ☠️ 窒息 | 究极挑战，极限测试 |
 
 ---
 
-## 目录结构
+## 参数说明
+
+### 核心参数
+
+| 参数 | 默认值 | 说明 |
+|------|--------|------|
+| `--level` | 3 | 难度等级 1-5 |
+| `--mode` | direct | 执行模式：direct/ralplan/ralph |
+| `--boss-name` | — | 老板名称（用于多老板对战） |
+
+### 游戏参数
+
+| 参数 | 说明 |
+|------|------|
+| `--xp` | 经验值 |
+| `--achievements` | 查看成就列表 |
+| `--emotion` | 查看老板当前情绪 |
+
+---
+
+## 输出示例
 
 ```
-boss-skill/
-├── SKILL.md                    # 主入口
-├── prompts/                    # 各种 prompt 模板
-│   ├── intake.md              # 录入老板信息
-│   ├── boss_persona_builder.md
-│   ├── boss_work_builder.md
-│   └── ...
-├── tools/                      # 工具脚本
-│   ├── skill_writer.py        # 创建老板
-│   ├── evolution_logger.py     # 进化日志
-│   ├── rl_feedback.py         # RL 反馈
-│   ├── multi_boss_battle.py   # 修罗场
-│   └── leaderboard.py         # 排行榜
-├── bosses/                     # 老板数据库
-│   ├── example_wang/          # 老王案例
-│   └── example_li/           # 李姐案例
-├── gamification/               # 游戏化
-├── community/                 # 社区
-├── multimodal_input.py        # 多模态输入
-└── docker-compose.yml         # Docker 部署
+╔══════════════════════════════════════════╗
+║     老板.skill v7.0  对线开始           ║
+╠══════════════════════════════════════════╣
+║  老板: 老王 (☠️ 窒息模式)                ║
+║  心情: 😡 生气 (压力×1.6)               ║
+║  你的XP: 850 | 等级: 8                   ║
+║  当前成就: 对线老手 ×3                   ║
+╚══════════════════════════════════════════╝
+
+> 你: 方案我做好了，发您看看
+
+😡 老王: 这个方案问题很多！
+   1. 数据来源不明
+   2. ROI计算逻辑有问题
+   ...
 ```
+
+---
+
+## 前提条件
+
+- **平台**: OpenClaw
+- **可选**: Claude API（用于更真实的对话生成）
+- **可选**: Docker（用于容器化部署）
+
+---
+
+## 核心工具一览
+
+| 类别 | 工具 | 命令 |
+|------|------|------|
+| **基础** | cost_tracker.py | `/boss-cost` 成本追踪 |
+| | session_manager.py | `/boss-session` 会话管理 |
+| | doctor.py | `/boss-doctor` 健康诊断 |
+| **执行** | ralplan_ralph.py | `/boss-mode` 双层模式 |
+| **进化** | evolution_logger.py | `/boss-evolve` 进化追踪 |
+| | pattern_detector.py | `/boss-patterns` 模式检测 |
+| | rl_feedback.py | `/boss-rl` RL反馈 |
+| **对战** | multi_boss_battle.py | `/boss-battle` 多老板对战 |
+| | leaderboard.py | `/boss-leaderboard` 排行榜 |
 
 ---
 
 ## 版本历史
 
-| 版本 | 变化 |
-|------|------|
-| v1-v3 | 基础功能，老板创建、进化 |
-| v4 | 冲冠版：RL反馈、多老板对战、排行榜 |
-| v5 | Docker、CI/CD |
-| v6 | Claude Code 架构集成 |
-| v7 | 全功能：游戏化+情绪+社区+多模态 |
+| 版本 | 更新内容 |
+|------|---------|
+| v1.0 | 初始版本 |
+| v3.0 | 自我进化系统 |
+| v4.0 | RL反馈+对战+排行榜 |
+| v5.0 | Docker/CI-CD/测试 |
+| v6.0 | Claude Code架构集成 |
+| v6.1 | oh-my-codex双层执行模式 |
+| **v7.0** | **全功能版：游戏化+情绪+社区+多模态** |
 
 ---
 
-## 声明
+## 相关链接
 
-- 仅用于自我认知和向上管理训练
-- 老板行为基于你输入的真实数据，不是胡编
-- 进化记录都有保存，可以回滚
-
----
-
-## 冲冠 Hackathon
-
-| 维度 | 得分 |
-|------|------|
-| 创意 | 9/10 |
-| 技术 | 9/10 |
-| 工程化 | 8/10 |
-| 实用价值 | 10/10 |
-| 演示效果 | 10/10 |
-
-**总分：91/100**
-
----
-
-有问题或想法？欢迎提 issue 或 PR。
-
-让苛刻成为生产力 🏆
+- **GitHub**: https://github.com/Bolun-wu/boss-skill
+- **OpenClaw**: https://clawhub.ai
