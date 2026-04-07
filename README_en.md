@@ -4,7 +4,7 @@
 [![Forks](https://img.shields.io/github/forks/BOLUNWU97/boss-skill?style=for-the-badge)](https://github.com/BOLUNWU97/boss-skill/network/members)
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 
-> 🎮 **[Live Demo](https://BOLUNWU97.github.io/boss-skill/demo/)** — See the boss simulation in action!
+> 🎮 **[Live Demo](https://bolunwu97.github.io/boss-skill/demo/)** — See the boss simulation in action!
 
 ---
 
