@@ -1,4 +1,12 @@
-# 🎭 Boss Skill · 老板蒸馏系统
+# 🎭 Boss Skill
+
+[![Stars](https://img.shields.io/github/stars/BOLUNWU97/boss-skill?style=for-the-badge)](https://github.com/BOLUNWU97/boss-skill/stargazers)
+[![Forks](https://img.shields.io/github/forks/BOLUNWU97/boss-skill?style=for-the-badge)](https://github.com/BOLUNWU97/boss-skill/network/members)
+[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
+
+> 🎮 **[Live Demo](https://BOLUNWU97.github.io/boss-skill/demo/)** — 不想看文档？直接体验老板对线
+
+---
 
 **把让人窒息的老板，变成你的训练对手**
 
@@ -126,7 +134,7 @@ python tools/skill_writer.py --create
 > 你说一个数字，他会问这个数字怎么来的
 
 **李姐** · 某互联网 · ⭐⭐⭐⭐ 4.2/5
-> 表面温和，实际上问题更刁钻
+> 表面温和，但实际上问题更刁钻
 > "我不太懂你的思路，说说看？"
 > 让你自己把自己问倒
 
@@ -144,10 +152,10 @@ boss-skill/
 │   └── ...
 ├── tools/                      # 工具脚本
 │   ├── skill_writer.py        # 创建老板
-│   ├── evolution_logger.py    # 进化日志
+│   ├── evolution_logger.py     # 进化日志
 │   ├── rl_feedback.py         # RL 反馈
-│   ├── multi_boss_battle.py    # 修罗场
-│   └── leaderboard.py          # 排行榜
+│   ├── multi_boss_battle.py   # 修罗场
+│   └── leaderboard.py         # 排行榜
 ├── bosses/                     # 老板数据库
 │   ├── example_wang/          # 老王案例
 │   └── example_li/           # 李姐案例
